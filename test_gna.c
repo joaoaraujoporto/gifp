@@ -4,6 +4,17 @@
 void test_gna() {
     int seed;
 
+    assert_equal_double(0.0002157920973, gna(), 6);
+    assert_equal_double(0.00002157874406, gna(), 6);
+    assert_equal_double(0.9999805787, gna(), 6);
+    assert_equal_double(0.09999589999, gna(), 6);
+    assert_equal_double(0.9100015321, gna(), 6);
+    assert_equal_double(0.3810005632, gna(), 6);
+    assert_equal_double(0.9470999031, gna(), 6);
+    assert_equal_double(0.556609934, gna(), 6);
+    assert_equal_double(0.8609510031, gna(), 6);
+    assert_equal_double(0.3304341069, gna(), 6);
+
     seed = 99;
     assert_equal_double(0.002136341763, sgna(seed), 6);
     assert_equal_double(0.0002136295662, gna(), 6);
