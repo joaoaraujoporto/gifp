@@ -1,16 +1,39 @@
+#ifndef __gna_h__
+#define __gna_h__
 
-int gna(int seed);
-int gna(int length, int k);
+#include "util.h"
+#include "time.h"
 
-int gna(int seed) {
-  return 1;
-}
+unsigned long int seed = 0;
 
-int gna(length, k) {
-  int n = gna(length);
+double gna();
+double sgna(int nseed);
+// int gna(int length, int k);
+
+double gna() {
+  unsigned long int multiplier, module;
+
+  if (seed == 0) seed = time(NULL);
+
+  multiplier = 46341;
+  module = 2147483647;
+  seed = seed * multiplier % module;
   
-  while (!is_prime(n, k))
-    n = gna(length);
-
-  return n;
+  return (double) seed / (double) module;
 }
+
+double sgna(int nseed) {
+  seed = nseed;
+  return gna();
+}
+
+// int gna(length, k) {
+//   int n = gna(length);
+  
+//   while (!is_prime(n, k))
+//     n = gna(length);
+
+//   return n;
+// }
+
+#endif

@@ -3,6 +3,7 @@
 
 #include "math.h"
 #include "util.h"
+#include "gna.h"
 
 bool get_rd(int n, int *r, int *d);
 bool is_prime(int n, int k);
@@ -29,29 +30,29 @@ bool get_rd(int n, int *r, int *d) {
   return true;
 }
 
-// bool is_prime(int n, int k) {
-//   if (n < 4 || n % 2 == 0) return 0;  
+bool is_prime(int n, int k) {
+  if (n < 4 || n % 2 == 0) return false;
 
-//   int r = 1;
-//   int d = 1;
+  int r = 1;
+  int d = 1;
   
-//   int i;
-//   for (i = 0; i < k; i++) {
-//     int a = (int) gna(1) * (n-2) + 2;
-//     int x = (int) pow(a, d) % n;
+  int i;
+  for (i = 0; i < k; i++) {
+    int a = (int) gna() * (n-2) + 2;
+    int x = (int) pow(a, d) % n;
 
-//     if (x == 1 || x == n-1) continue;
+    if (x == 1 || x == n-1) continue;
 
-//     int k;
-//     for (k = 0; k < r-1; k++) {
-//       x = (int) pow(x, 2) % n;
-//       if (x == n-1) continue;
-//     }
+    int k;
+    for (k = 0; k < r-1; k++) {
+      x = (int) pow(x, 2) % n;
+      if (x == n-1) continue;
+    }
     
-//     return false;
-//   }
+    return false;
+  }
   
-//   return true;
-// }
+  return true;
+}
 
 #endif
