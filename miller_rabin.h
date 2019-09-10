@@ -41,21 +41,26 @@ bool is_prime(int n, int k) {
 
   int r, d;
   get_rd(n, &r, &d);
+  // printf("r = %d, d = %d\n", r, d);
 
   int i;
   for (i = 0; i < k; i++) {
     int a = (int) (gna() * (n-4)) + 2;
+    // printf("%d belongs [2, %d-2]\n", a, n);
     int x = (int) pow(a, d) % n;
+    // printf("x = %d\n", x);
 
     if (x == 1 || x == n-1) continue;
 
     int k;
     for (k = 0; k < r-1; k++) {
       x = (int) pow(x, 2) % n;
+      // printf("x pre = %d\n", x);
       if (x == n-1) break;
+      // printf("x pos = %d\n", x);
     }
 
-    if (k == r) return false;
+    if (k == r-1) return false;
   }
   
   return true;
