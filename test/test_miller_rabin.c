@@ -1,5 +1,4 @@
 #include "miller_rabin.h"
-#include "stdio.h"
 #include "util.h"
 
 void test_get_rd() {
@@ -42,12 +41,15 @@ void test_is_prime() {
     assert_equal_bool(false, is_prime(9, 1));
     assert_equal_bool(false, is_prime(15, 1));
     assert_equal_bool(false, is_prime(21, 1));
+    assert_equal_bool(false, is_prime(87, 100));
 
-    assert_equal_bool(true, is_prime(5, 100));
-    assert_equal_bool(true, is_prime(7, 100));
-    assert_equal_bool(true, is_prime(11, 100));
-    assert_equal_bool(true, is_prime(13, 100));
-    assert_equal_bool(true, is_prime(17, 100));
+    assert_equal_bool(true, is_prime(5, 1));
+    assert_equal_bool(true, is_prime(7, 1));
+    assert_equal_bool(true, is_prime(11, 1));
+    assert_equal_bool(true, is_prime(13, 1));
+    assert_equal_bool(true, is_prime(17, 1));
+    assert_equal_bool(true, is_prime(17, 1));
+    assert_equal_bool(true, is_prime(97, 1));
 }
 
 int main() {

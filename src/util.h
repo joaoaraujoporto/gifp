@@ -3,14 +3,20 @@
 
 #include "stdio.h"
 #include "math.h"
-#include "stdlib.h"
 
 typedef enum {
     false,
     true
 } bool;
 
+typedef unsigned long int ul_int;
+typedef unsigned int u_int;
+
 bool assert_equal(int expected, int actual);
+bool assert_equal_bool(bool expected, bool actual);
+bool assert_equal_double(double expected, double actual, int places_precision);
+
+int ndigits(int number);
 
 bool assert_equal(int expected, int actual) {
     if (expected == actual) {
@@ -28,16 +34,14 @@ bool assert_equal_bool(bool expected, bool actual) {
         return true;
     }
 
-    if (expected == true)
-        printf("Expected true, but actual false\n");
-    else
-        printf("Expected false, but actual true\n");
+    if (expected == true) printf("Expected true, but actual false\n");
+    else printf("Expected false, but actual true\n");
 
     return false;
 }
 
 /**
- * @param places_precision util 6 places
+ * @param places_precision until 6 places
  **/
 bool assert_equal_double(double expected, double actual, int places_precision) {
     double precision = 1;
@@ -52,6 +56,12 @@ bool assert_equal_double(double expected, double actual, int places_precision) {
 
     printf("Expected %f, but actual %f\n", expected, actual);
     return false;
+}
+
+u_int cdigits(int n) {
+    int c = 1;
+    for (; n/10 != 0; c++) n /= 10;
+    return c;
 }
 
 #endif
