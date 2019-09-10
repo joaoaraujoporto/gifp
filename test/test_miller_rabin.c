@@ -1,8 +1,8 @@
-#include "miller_rabin.h"
-#include "util.h"
+#include "../src/miller_rabin.h"
+#include "../src/util.h"
 
 void test_get_rd() {
-    int n, r, d;
+    ul_int n, r, d;
 
     n = -1;
     assert_equal_bool(false, get_rd(n, &r, &d));
@@ -50,6 +50,7 @@ void test_is_prime() {
     assert_equal_bool(true, is_prime(17, 1));
     assert_equal_bool(true, is_prime(17, 1));
     assert_equal_bool(true, is_prime(97, 1));
+    assert_equal_bool(true, is_prime(1000000000000066600000000000001, 1));
 }
 
 int main() {

@@ -16,7 +16,7 @@ bool is_prime(int n, int k);
  * @param d is a pointer to the odd returned
  * @return true if result is okay, false otherwise 
  */
-bool get_rd(int n, int *r, int *d) {
+bool get_rd(ul_int n, ul_int *r, ul_int *d) {
   if (n < 2) return false;
 
   *r = 0;
@@ -39,7 +39,7 @@ bool get_rd(int n, int *r, int *d) {
 bool is_prime(int n, int k) {
   if (n < 4 || n % 2 == 0) return false;
 
-  int r, d;
+  ul_int r, d;
   get_rd(n, &r, &d);
 
   int i;
