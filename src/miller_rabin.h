@@ -5,8 +5,8 @@
 #include "util.h"
 #include "gna.h"
 
-bool get_rd(int n, int *r, int *d);
-bool is_prime(int n, int k);
+bool get_rd(ul_int n, ul_int *r, ul_int *d);
+bool is_prime(ul_int n, ul_int k);
 
 /**
  * Factor out powers of 2 from n − 1, being n > 1
@@ -36,7 +36,7 @@ bool get_rd(ul_int n, ul_int *r, ul_int *d) {
  * @param k is the number of iterations
  * @return true if probably prime, false otherwise
  */
-bool is_prime(int n, int k) {
+bool is_prime(ul_int n, ul_int k) {
   if (n < 4 || n % 2 == 0) return false;
 
   ul_int r, d;

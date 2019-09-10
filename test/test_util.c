@@ -31,7 +31,8 @@ void test_ndigits() {
     assert_equal(4, cdigits(4887));
     assert_equal(10, cdigits(1234567890));
     assert_equal(10, cdigits(3797281624));
-    assert_equal(10, cdigits(-1234567890));
+    assert_equal(10, cdigits(6585872435));
+    assert_equal(10, cdigits(9468553006));
 }
 
 int main() {

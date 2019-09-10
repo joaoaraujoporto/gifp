@@ -58,9 +58,14 @@ bool assert_equal_double(double expected, double actual, int places_precision) {
     return false;
 }
 
-u_int cdigits(int n) {
-    int c = 1;
-    for (; n/10 != 0; c++) n /= 10;
+/**
+ * Count the number of digits of a number
+ * @param n is the number for count (n must b natural)
+ * @return the number of digits that compose n
+ */
+u_int cdigits(ul_int n) {
+    u_int c = 1;
+    for (; n/10 != 0; c++) n /= 10; 
     return c;
 }
 

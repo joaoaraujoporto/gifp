@@ -9,7 +9,7 @@ ul_int seed = 0;
 
 double gna();
 double sgna(int nseed);
-int gnai(int length);
+ul_int gnai(int length);
 
 double gna() {
   ul_int multiplier, module;
@@ -28,7 +28,7 @@ double sgna(int nseed) {
   return gna();
 }
 
-int gnai(int length) {
+ul_int gnai(int length) {
   ul_int n, c;
   u_int r, q, i, j;
 
