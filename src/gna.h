@@ -41,9 +41,10 @@ ul_int gnai(int length) {
   for (i = 0; i < q; i++) {
     double a = gna();
     u_int p = (u_int) (a * 1e6);
-    while (p == 0) p = (u_int) (gna() * 1e6);
+
+    while (p == 0 || p < 1e5) p = (u_int) (gna() * 1e6);
     n += (ul_int) (p * pow(10, 6*i));
-    printf("n in 1for = %ld, p = %d, a = %lf\n", n, p, a);
+    // printf("n in 1for = %ld, p = %d, a = %lf\n", n, p, a);
   }
 
   for (int j = 0; j < r; j++) {
@@ -53,7 +54,7 @@ ul_int gnai(int length) {
 
     // printf("p in 2for = %d, part desired = %f\n", p, ();
     c += (ul_int) (p * pow(10, j));
-    printf("n in 2for = %ld, p = %d, a = %lf, c = %ld", n, p, a, c);
+    // printf("n in 2for = %ld, p = %d, a = %lf, c = %ld", n, p, a, c);
   }
 
   n += (ul_int) (c * pow(10, 6*i));
