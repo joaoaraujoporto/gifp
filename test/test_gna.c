@@ -61,7 +61,17 @@ void test_gnai() {
     assert_equal(18, cdigits(gnai(18))); // limit for now (ul_int has 64 bits)
 }
 
+void test_gnab() {
+    assert_equal(1, gnab(0));
+    assert_equal(1, gnab(1));
+    assert_equal(1, gnab(2));
+    assert_equal(1, gnab(3));
+    assert_equal(1, gnab(4));
+    assert_equal(1, gnab(5));
+}
+
 int main() {
     // test_gna();
-    test_gnai();
+    // test_gnai();
+    test_gnab();
 }

@@ -42,7 +42,7 @@ void test_get_upper() {
     assert_equal(3, get_upper(2));
     assert_equal(7, get_upper(3));
     assert_equal(1023, get_upper(10));
-    assert_equal(1, get_upper(32));
+    assert_equal(65535, get_upper(16)); // limit for now
 }
 
 int main() {
