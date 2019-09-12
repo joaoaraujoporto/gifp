@@ -69,4 +69,14 @@ u_int cdigits(ul_int n) {
     return c;
 }
 
+ul_int expi(int x, int y) {
+    if (y == 0) return 1;
+    return x * expi(x, y-1);
+}
+
+ul_int get_upper(u_int n_bits) {
+    // return pow(2, n_bits) - 1;
+    return expi(2, n_bits) - 1;
+}
+
 #endif

@@ -23,7 +23,7 @@ void test_assert_equal_double() {
     assert_equal_bool(false, assert_equal_double(0.000001, 0.000002, 6));
 }
 
-void test_ndigits() {
+void test_cdigits() {
     assert_equal(1, cdigits(0));
     assert_equal(2, cdigits(11));
     assert_equal(2, cdigits(13));
@@ -35,8 +35,19 @@ void test_ndigits() {
     assert_equal(10, cdigits(9468553006));
 }
 
+
+void test_get_upper() {
+    assert_equal(0, get_upper(0));
+    assert_equal(1, get_upper(1));
+    assert_equal(3, get_upper(2));
+    assert_equal(7, get_upper(3));
+    assert_equal(1023, get_upper(10));
+    assert_equal(1, get_upper(32));
+}
+
 int main() {
     // test_assert_equal_double();
     // test_assert_equal_bool();
-    test_ndigits();
+    // test_cdigits();
+    test_get_upper();
 }
