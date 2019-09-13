@@ -10,7 +10,7 @@ typedef enum {
     true
 } bool;
 
-typedef mpz_t ul_int;
+typedef unsigned long int ul_int;
 typedef unsigned int u_int;
 
 bool assert_equal(int expected, int actual);
