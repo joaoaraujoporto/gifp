@@ -3,13 +3,14 @@
 
 #include "stdio.h"
 #include "math.h"
+#include "gmp.h"
 
 typedef enum {
     false,
     true
 } bool;
 
-typedef unsigned long int ul_int;
+typedef mpz_t ul_int;
 typedef unsigned int u_int;
 
 bool assert_equal(int expected, int actual);
