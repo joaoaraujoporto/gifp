@@ -33,6 +33,8 @@ double sgna(int nseed) {
  * @return n, the random number
  */
 ul_int gnai(int length) {
+  if (length < 1) return 0;
+
   ul_int n, c;
   u_int r, q, i, j;
 
@@ -53,11 +55,12 @@ ul_int gnai(int length) {
   }
 
   n += (ul_int) (c * pow(10, 6*i));
-  printf("n == %ld ", n);
   return n;
 }
 
 ul_int gnab(u_int n_bits) {
+  if (n_bits < 1) return 0;
+
   ul_int upper = get_upper(n_bits);
   ul_int lower = get_upper(n_bits-1);
 

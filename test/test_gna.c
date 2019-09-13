@@ -62,12 +62,17 @@ void test_gnai() {
 }
 
 void test_gnab() {
-    assert_equal(1, gnab(0));
-    assert_equal(1, gnab(1));
-    assert_equal(1, gnab(2));
-    assert_equal(1, gnab(3));
-    assert_equal(1, gnab(4));
-    assert_equal(1, gnab(5));
+    /**
+     * 0 is not really expected in this block
+     */
+    assert_equal(0, gnab(0));
+    assert_equal(0, gnab(1));
+    assert_equal(0, gnab(2));
+    assert_equal(0, gnab(3));
+    assert_equal(0, gnab(4));
+    assert_equal(0, gnab(5));
+    assert_equal(0, gnab(16));
+    assert_equal(0, gnab(32));
 }
 
 int main() {
