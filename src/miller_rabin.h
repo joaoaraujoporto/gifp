@@ -49,13 +49,13 @@ bool is_prime(ul_int n, ul_int k) {
 
     if (x == 1 || x == n-1) continue;
 
-    int k;
-    for (k = 0; k < r-1; k++) {
+    int j;
+    for (j = 0; j < r-1; j++) {
       x = (int) pow(x, 2) % n;
       if (x == n-1) break;
     }
 
-    if (k == r-1) return false;
+    if (j == r-1) return false;
   }
   
   return true;

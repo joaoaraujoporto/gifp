@@ -72,7 +72,7 @@ void test_gnab() {
     assert_equal(0, gnab(4));
     assert_equal(0, gnab(5));
     assert_equal(0, gnab(16));
-    assert_equal(0, gnab(32));
+    assert_equal(0, gnab(32)); // yet not supported
 }
 
 int main() {

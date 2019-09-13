@@ -4,13 +4,15 @@
 #include "gna.h"
 #include "miller_rabin.h"
 
-int gnp(int length, int k);
+ul_int gnp(u_int n_bits, int k);
 
-int gnp(int length, int k) {
-  int n = gnai(length);
+ul_int gnp(u_int n_bits, int k) {
+  if (n_bits < 3) return 0;
+
+  ul_int n = gnab(n_bits);
   
   while (!is_prime(n, k))
-    n = gnai(length);
+    n = gnab(n_bits);
 
   return n;
 }
