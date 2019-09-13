@@ -61,10 +61,10 @@ ul_int gnai(int length) {
 ul_int gnab(u_int n_bits) {
   if (n_bits < 1) return 0;
 
-  ul_int upper = get_upper(n_bits);
-  ul_int lower = get_upper(n_bits-1);
-
-  return gna() * (upper - (lower+1)) + (lower+1);
+  ul_int b, e;
+  get_range(n_bits, &b, &e);
+  
+  return gna() * (e - (b+1)) + (b+1);
 }
 
 #endif

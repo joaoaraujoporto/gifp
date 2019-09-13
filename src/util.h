@@ -79,4 +79,20 @@ ul_int get_upper(u_int n_bits) {
     return expi(2, n_bits) - 1;
 }
 
+void get_range(u_int n_bits, ul_int *b, ul_int *e) {
+    *b = get_upper(n_bits-1) + 1;
+    if (n_bits == 1) *b -= 1;
+    *e = get_upper(n_bits);
+}
+
+bool contains(ul_int e, ul_int l[], ul_int size_l) {
+    int i;
+
+    for (i = 0; i < size_l; i++)
+        if (e == l[i])
+            return true;
+
+    return false;
+}
+
 #endif
