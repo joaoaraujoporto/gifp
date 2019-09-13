@@ -40,18 +40,26 @@ ul_int gnp3(u_int n_bits, int k) {
   
   ul_int i, b, e;
   get_range(n_bits, &b, &e);
-  ul_int limit = (e - b)/2 + 1; // simplified.
-
+  ul_int limit = (e - b); // simplified.
+  // printf("n == %ld\n", n);
+  // printf("limit == %ld\n", limit);
   ul_int vis[limit];
-  ul_int j = 0;
 
   for (i = 0; i < limit; i++) {
-    n = gnab(n_bits);
+    // if (n == 40961) printf("n == %ld\n", n);
     while (contains(n, vis, i)) n = gnab(n_bits);
+    // if (n == 40961) printf("n == %ld\n", n);
     if (is_prime(n, k)) break;
     vis[i] = n;
+
+    // if (n == 40961)
+    //   printf("n == %ld\n", n);
+
   }
-  
+
+  // // if (n == 40961) printf("n == %ld\n", n);
+  // if (contains(40961, vis, i)) printf("n == %ld\n", n);
+  // printf("i == %ld\n", i);
   if (i == limit) return 0;
   return n;
 }

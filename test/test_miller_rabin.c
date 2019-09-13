@@ -52,6 +52,7 @@ void test_is_prime() {
     
     assert_equal_bool(false, is_prime(36545, 3));
     assert_equal_bool(false, is_prime(4097, 3));
+    assert_equal_bool(true, is_prime(40961, 3));
 
     assert_equal_bool(true, is_prime(97, 1));
     assert_equal_bool(true, is_prime(5, 1));
