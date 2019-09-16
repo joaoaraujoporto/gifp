@@ -5,27 +5,58 @@
 #include "math.h"
 #include "gmp.h"
 
+#define init_i __gmpz_init
+#define inits_i __gmpz_inits
+#define sum_i __gmpz_add
+#define clear_i __gmpz_clear
+#define clears_i __gmpz_clears
+#define set_i __gmpz_set
+#define set_i_ui __gmpz_set_ui
+#define set_i_s __gmpz_set_str
+#define init_set_i __gmpz_init_set_ui
+#define cmp_i __gmpz_cmp
+#define cmp_r __gmpf_cmp
+#define init_r __gmpf_init
+#define inits_r __gmpf_inits
+#define set_r __gmpf_set
+#define set_r_d __gmpf_set_d
+#define set_r_s __gmpf_set_str
+#define clear_r __gmpf_clear
+#define clears_r __gmpf_clears
+
 typedef enum {
     false,
     true
 } bool;
 
+typedef mpz_t integer;
+typedef mpf_t real;
 typedef unsigned long int ul_int;
 typedef unsigned int u_int;
 
-bool assert_equal(int expected, int actual);
+bool assert_equal(ul_int expected, ul_int actual);
 bool assert_equal_bool(bool expected, bool actual);
 bool assert_equal_double(double expected, double actual, int places_precision);
 
 int ndigits(int number);
 
-bool assert_equal(int expected, int actual) {
+bool assert_equal(ul_int expected, ul_int actual) {
     if (expected == actual) {
         printf("passed\n");
         return true;
     }
+    
+    printf("Expected %ld, but actual %ld\n", expected, actual);
+    return false;
+}
 
-    printf("Expected %d, but actual %d\n", expected, actual);
+bool assert_equal_integer(integer expected, integer actual) {
+    if (!cmp_i(expected, actual)) {
+        printf("passed\n");
+        return true;
+    }
+
+    gmp_printf("Expected %Zd, but actual %Zd\n", expected, actual);
     return false;
 }
 
@@ -56,6 +87,19 @@ bool assert_equal_double(double expected, double actual, int places_precision) {
     }
 
     printf("Expected %f, but actual %f\n", expected, actual);
+    return false;
+}
+
+/**
+ * @param places_precision until 6 places
+ **/
+bool assert_equal_real(real expected, real actual) {
+    if (!cmp_r(expected, actual)) {
+        printf("passed\n");
+        return true;
+    }
+
+    gmp_printf("Expected %Ff, but actual %Ff\n", expected, actual);
     return false;
 }
 

@@ -1,5 +1,28 @@
 #include "../src/util.h"
 
+void test_assert_equal_integer() {
+    integer n, m;
+    inits_i(n, m, NULL);
+
+    set_i_ui(n, 1);
+    set_i_ui(m, 1);
+    assert_equal(true, assert_equal_integer(n, m));
+
+    set_i_ui(m, 2);
+    assert_equal(false, assert_equal_integer(n, m));
+
+    set_i_s(m, "900000000000000000000000000000000000000000000000000000000000000000", 0);
+    assert_equal(false, assert_equal_integer(n, m));
+
+    set_i_s(n, "900000000000000000000000000400000000000000000000000000000000000000", 0);
+    assert_equal(false, assert_equal_integer(n, m));
+
+    set_i_s(n, "900000000000000000000000000000000000000000000000000000000000000000", 0);
+    assert_equal(true, assert_equal_integer(n, m));
+
+    clears_i(n, m, NULL);
+}
+
 void test_assert_equal_bool() {
     assert_equal(1, assert_equal_bool(false, false));
     assert_equal(0, assert_equal_bool(false, true));
@@ -21,6 +44,41 @@ void test_assert_equal_double() {
     assert_equal_bool(true, assert_equal_double(0.01, 0.02, 1));
     assert_equal_bool(true, assert_equal_double(0.000001, 0.000001, 6));
     assert_equal_bool(false, assert_equal_double(0.000001, 0.000002, 6));
+}
+
+void test_assert_equal_real() {
+    real n, m;
+    inits_r(n, m, NULL);
+
+    set_r_d(n, 1);
+    set_r_d(m, 1);
+    assert_equal_bool(true, assert_equal_real(n, m));
+
+    set_r_d(n, 1);
+    set_r_d(m, 2);
+    assert_equal_bool(false, assert_equal_real(n, m));
+
+    set_r_d(n, 0.1);
+    set_r_d(m, 0.1);
+    assert_equal_bool(true, assert_equal_real(n, m));
+
+    set_r_d(n, 0.1);
+    set_r_d(m, 0.2);
+    assert_equal_bool(false, assert_equal_real(n, m));
+
+    set_r_d(n, 0.01);
+    set_r_d(m, 0.02);
+    assert_equal_bool(false, assert_equal_real(n, m));
+
+    set_r_d(n, 0.000000000001);
+    set_r_d(m, 0.000000000002);
+    assert_equal_bool(false, assert_equal_real(n, m));
+
+    set_r_d(n, 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000001);
+    set_r_d(m, 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000002);
+    assert_equal_bool(false, assert_equal_real(n, m));
+
+    clears_r(n, m, NULL);
 }
 
 void test_cdigits() {
@@ -96,10 +154,12 @@ void test_contains() {
 }
 
 int main() {
+    test_assert_equal_integer();
     // test_assert_equal_double();
+    // test_assert_equal_real();
     // test_assert_equal_bool();
     // test_cdigits();
     // test_get_upper();
     // test_get_range();
-    test_contains();
+    // test_contains();
 }

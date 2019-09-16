@@ -5,7 +5,7 @@
 #define integer mpz_t
 #define init_i __gmpz_init
 #define inits_i __gmpz_inits
-#define sum_i mpz_add
+#define sum_i __gmpz_add
 #define clear_i __gmpz_clear
 #define clears_i __gmpz_clears
 #define set_i __gmpz_set_ui
@@ -21,7 +21,7 @@ int main() {
     inits_i(n, m, sum, NULL);
 
     set_i(n, 1);
-    mpz_set_str(m, "900000000000000000000000000000000000000000000000000000000000000000", 0);
+    set_s(m, "900000000000000000000000000000000000000000000000000000000000000000", 0);
     sum_i(sum, n, m);
 
     gmp_printf("n + m = %Zd\n", sum);
