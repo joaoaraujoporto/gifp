@@ -8,12 +8,14 @@
 #define init_i __gmpz_init
 #define inits_i __gmpz_inits
 #define sum_i __gmpz_add
+#define sub_i __gmpz_sub
+#define sub_i_ui __gmpz_sub_ui
 #define clear_i __gmpz_clear
 #define clears_i __gmpz_clears
 #define set_i __gmpz_set
 #define set_i_ui __gmpz_set_ui
-#define set_i_s __gmpz_set_str
-#define init_set_i __gmpz_init_set_ui
+// #define set_i_s __gmpz_set_str
+#define init_set_i_ui __gmpz_init_set_ui
 #define cmp_i __gmpz_cmp
 #define cmp_r __gmpf_cmp
 #define init_r __gmpf_init
@@ -23,6 +25,7 @@
 #define set_r_s __gmpf_set_str
 #define clear_r __gmpf_clear
 #define clears_r __gmpf_clears
+#define pow_ui __gmpz_pow_ui
 
 typedef enum {
     false,
@@ -40,6 +43,8 @@ bool assert_equal_double(double expected, double actual, int places_precision);
 
 int ndigits(int number);
 
+int set_i_s(integer i, const char * s) { mpz_set_str(i, s, 10); }
+
 bool assert_equal(ul_int expected, ul_int actual) {
     if (expected == actual) {
         printf("passed\n");
@@ -47,16 +52,6 @@ bool assert_equal(ul_int expected, ul_int actual) {
     }
     
     printf("Expected %ld, but actual %ld\n", expected, actual);
-    return false;
-}
-
-bool assert_equal_integer(integer expected, integer actual) {
-    if (!cmp_i(expected, actual)) {
-        printf("passed\n");
-        return true;
-    }
-
-    gmp_printf("Expected %Zd, but actual %Zd\n", expected, actual);
     return false;
 }
 
@@ -69,6 +64,16 @@ bool assert_equal_bool(bool expected, bool actual) {
     if (expected == true) printf("Expected true, but actual false\n");
     else printf("Expected false, but actual true\n");
 
+    return false;
+}
+
+bool assert_equal_integer(integer expected, integer actual) {
+    if (!cmp_i(expected, actual)) {
+        printf("passed\n");
+        return true;
+    }
+
+    gmp_printf("Expected %Zd, but actual %Zd\n", expected, actual);
     return false;
 }
 
@@ -120,8 +125,17 @@ ul_int expi(int x, int y) {
 }
 
 ul_int get_upper(u_int n_bits) {
-    // return pow(2, n_bits) - 1;
     return expi(2, n_bits) - 1;
+}
+
+void get_upper_i(integer upper, u_int n_bits) {
+    integer base;
+
+    init_set_i_ui(base, 2);
+    pow_ui(upper, base, n_bits);
+    sub_i_ui(upper, upper, 1);
+
+    clear_i(base);
 }
 
 void get_range(u_int n_bits, ul_int *b, ul_int *e) {

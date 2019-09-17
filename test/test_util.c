@@ -6,19 +6,19 @@ void test_assert_equal_integer() {
 
     set_i_ui(n, 1);
     set_i_ui(m, 1);
-    assert_equal(true, assert_equal_integer(n, m));
+    assert_equal_bool(true, assert_equal_integer(n, m));
 
     set_i_ui(m, 2);
-    assert_equal(false, assert_equal_integer(n, m));
+    assert_equal_bool(false, assert_equal_integer(n, m));
 
-    set_i_s(m, "900000000000000000000000000000000000000000000000000000000000000000", 0);
-    assert_equal(false, assert_equal_integer(n, m));
+    set_i_s(m, "900000000000000000000000000000000000000000000000000000000000000000");
+    assert_equal_bool(false, assert_equal_integer(n, m));
 
-    set_i_s(n, "900000000000000000000000000400000000000000000000000000000000000000", 0);
-    assert_equal(false, assert_equal_integer(n, m));
+    set_i_s(n, "900000000000000000000000000400000000000000000000000000000000000000");
+    assert_equal_bool(false, assert_equal_integer(n, m));
 
-    set_i_s(n, "900000000000000000000000000000000000000000000000000000000000000000", 0);
-    assert_equal(true, assert_equal_integer(n, m));
+    set_i_s(n, "900000000000000000000000000000000000000000000000000000000000000000");
+    assert_equal_bool(true, assert_equal_integer(n, m));
 
     clears_i(n, m, NULL);
 }
@@ -103,6 +103,49 @@ void test_get_upper() {
     assert_equal(65535, get_upper(16)); // limit for now
 }
 
+void test_get_upper_i() {
+    integer upper_e, upper_a;
+    inits_i(upper_e, upper_a, NULL);
+
+    set_i_ui(upper_e, 0);
+    get_upper_i(upper_a, 0);
+    assert_equal_integer(upper_e, upper_a);
+
+    set_i_ui(upper_e, 1);
+    get_upper_i(upper_a, 1);
+    assert_equal_integer(upper_e, upper_a);
+
+    set_i_ui(upper_e, 3);
+    get_upper_i(upper_a, 2);
+    assert_equal_integer(upper_e, upper_a);
+
+    set_i_ui(upper_e, 7);
+    get_upper_i(upper_a, 3);
+    assert_equal_integer(upper_e, upper_a);
+
+    set_i_ui(upper_e, 65535);
+    get_upper_i(upper_a, 16);
+    assert_equal_integer(upper_e, upper_a);
+
+    set_i_ui(upper_e, 4294967295);
+    get_upper_i(upper_a, 32);
+    assert_equal_integer(upper_e, upper_a);
+
+    set_i_s(upper_e, "18446744073709551615");
+    get_upper_i(upper_a, 64);
+    assert_equal_integer(upper_e, upper_a);
+
+    set_i_s(upper_e, "340282366920938463463374607431768211455");
+    get_upper_i(upper_a, 128);
+    assert_equal_integer(upper_e, upper_a);
+
+    set_i_s(upper_e, "0"); // 0 is not really expected
+    get_upper_i(upper_a, 4096);
+    assert_equal_integer(upper_e, upper_a);
+
+    clears_i(upper_e, upper_a, NULL);
+}
+
 void test_get_range() {
     u_int n;
     ul_int b, e;
@@ -154,12 +197,13 @@ void test_contains() {
 }
 
 int main() {
-    test_assert_equal_integer();
+    // test_assert_equal_integer();
     // test_assert_equal_double();
     // test_assert_equal_real();
     // test_assert_equal_bool();
     // test_cdigits();
     // test_get_upper();
+    test_get_upper_i();
     // test_get_range();
     // test_contains();
 }
