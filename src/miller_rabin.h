@@ -30,6 +30,20 @@ bool get_rd(ul_int n, ul_int *r, ul_int *d) {
   return true;
 }
 
+bool get_rd_i(const integer n, integer r, integer d) {
+  if (comp_i_ui(n, 2) < 1) return false;
+
+  set_i_ui(r, 0);
+  sub_i_ui(d, n, 1);
+
+  while (*d % 2 == 0      mpz_mod_ui(d, 2)) {
+    *d /= 2;
+    *r += 1;
+  }
+
+  return true;
+}
+
 /**
  * Test if a number is prime
  * @param n is the number for test, n > 3
@@ -37,6 +51,36 @@ bool get_rd(ul_int n, ul_int *r, ul_int *d) {
  * @return true if probably prime, false otherwise
  */
 bool is_prime(ul_int n, ul_int k) {
+  if (n < 4 || n % 2 == 0) return false;
+
+  ul_int r, d;
+  get_rd(n, &r, &d);
+  // printf("n == %ld\n", n);
+  // printf("r == %ld, d == %ld\n", r, d);
+  
+  int i;
+  for (i = 0; i < k; i++) {
+    u_int a = (u_int) (gna() * (n-4)) + 2;
+    u_int x = (u_int) pow(a, d) % n;
+
+    // printf("a == %d, x == %d\n", a, x);
+
+    if (x == 1 || x == n-1) continue;
+
+    int j;
+    for (j = 0; j < r-1; j++) {
+      x = (u_int) pow(x, 2) % n;
+      // printf("x == %d\n", x);
+      if (x == n-1) break;
+    }
+
+    if (j == r-1) return false;
+  }
+  
+  return true;
+}
+
+bool is_prime_i(ul_int n, ul_int k) {
   if (n < 4 || n % 2 == 0) return false;
 
   ul_int r, d;

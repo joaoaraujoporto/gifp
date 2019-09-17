@@ -14,9 +14,11 @@
 #define clears_i __gmpz_clears
 #define set_i __gmpz_set
 #define set_i_ui __gmpz_set_ui
-// #define set_i_s __gmpz_set_str
 #define init_set_i_ui __gmpz_init_set_ui
 #define cmp_i __gmpz_cmp
+#define cmp_i_ui __gmpz_cmp_ui
+#define mod_i __gmpz_mod
+#define mod_i_ui mpz_fdiv_r_ui
 #define cmp_r __gmpf_cmp
 #define init_r __gmpf_init
 #define inits_r __gmpf_inits
@@ -50,7 +52,7 @@ bool assert_equal(ul_int expected, ul_int actual) {
         printf("passed\n");
         return true;
     }
-    
+
     printf("Expected %ld, but actual %ld\n", expected, actual);
     return false;
 }
