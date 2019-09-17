@@ -31,14 +31,17 @@ bool get_rd(ul_int n, ul_int *r, ul_int *d) {
 }
 
 bool get_rd_i(const integer n, integer r, integer d) {
-  if (comp_i_ui(n, 2) < 1) return false;
+  if (cmp_i_ui(n, 1) < 1) return false;
 
+  integer rm; init_i(rm);
   set_i_ui(r, 0);
   sub_i_ui(d, n, 1);
 
-  while (*d % 2 == 0      mpz_mod_ui(d, 2)) {
-    *d /= 2;
-    *r += 1;
+  mod_i_ui(rm, d, 2);
+  while (!cmp_i_ui(rm, 0)) {
+    div_i_ui(d, d, 2);
+    sum_i_ui(r, r, 1);
+    mod_i_ui(rm, d, 2);
   }
 
   return true;

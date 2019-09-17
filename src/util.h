@@ -8,6 +8,7 @@
 #define init_i __gmpz_init
 #define inits_i __gmpz_inits
 #define sum_i __gmpz_add
+#define sum_i_ui __gmpz_add_ui
 #define sub_i __gmpz_sub
 #define sub_i_ui __gmpz_sub_ui
 #define clear_i __gmpz_clear
@@ -19,6 +20,7 @@
 #define cmp_i_ui __gmpz_cmp_ui
 #define mod_i __gmpz_mod
 #define mod_i_ui mpz_fdiv_r_ui
+#define div_i_ui mpz_cdiv_q_ui
 #define cmp_r __gmpf_cmp
 #define init_r __gmpf_init
 #define inits_r __gmpf_inits
@@ -77,6 +79,13 @@ bool assert_equal_integer(integer expected, integer actual) {
 
     gmp_printf("Expected %Zd, but actual %Zd\n", expected, actual);
     return false;
+}
+
+bool assert_equal_i_ui(ul_int expected, integer actual) {
+    integer expected_i;
+    init_set_i_ui(expected_i, expected);
+    assert_equal_integer(expected_i, actual);
+    clear_i(expected_i);
 }
 
 /**

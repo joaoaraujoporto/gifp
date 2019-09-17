@@ -41,6 +41,55 @@ void test_get_rd() {
     assert_equal(571, d);
 }
 
+void test_get_rd_i() {
+    integer n, r, d;
+    inits_i(n, r, d, NULL);
+
+    set_i_ui(n, 0);
+    assert_equal_bool(false, get_rd_i(n, r, d));
+
+    set_i_ui(n, 1);
+    assert_equal_bool(false, get_rd_i(n, r, d));
+
+    set_i_ui(n, 2);
+    assert_equal_bool(true, get_rd_i(n, r, d));
+    assert_equal_i_ui(0, r);
+    assert_equal_i_ui(1, d);
+
+    set_i_ui(n, 3);
+    assert_equal_bool(true, get_rd_i(n, r, d));
+    assert_equal_i_ui(1, r);
+    assert_equal_i_ui(1, d);
+
+    set_i_ui(n, 5);
+    assert_equal_bool(true, get_rd_i(n, r, d));
+    assert_equal_i_ui(2, r);
+    assert_equal_i_ui(1, d);
+
+    set_i_ui(n, 7);
+    assert_equal_bool(true, get_rd_i(n, r, d));
+    assert_equal_i_ui(1, r);
+    assert_equal_i_ui(3, d);
+
+    set_i_ui(n, 4097);
+    assert_equal_bool(true, get_rd_i(n, r, d));
+    assert_equal_i_ui(12, r);
+    assert_equal_i_ui(1, d);
+
+    set_i_ui(n, 36545);
+    assert_equal_bool(true, get_rd_i(n, r, d));
+    assert_equal_i_ui(6, r);
+    assert_equal_i_ui(571, d);
+
+    set_i_s(n, "99999999999999999999999999999999999999999999999999999999999999999999998999999999998");
+    assert_equal_bool(true, get_rd_i(n, r, d));
+    assert_equal_i_ui(6, r); // not really expected 6
+    assert_equal_i_ui(571, d); // not really expected 571
+
+    clears_i(n, r, d, NULL);
+}
+
+
 void test_is_prime() {
     assert_equal_bool(false, is_prime(4, 1));
     assert_equal_bool(false, is_prime(6, 1));
@@ -68,5 +117,6 @@ void test_is_prime() {
 
 int main() {
     // test_get_rd();
-    test_is_prime();
+    test_get_rd_i();
+    // test_is_prime();
 }
