@@ -11,25 +11,33 @@
 #define sum_i_ui __gmpz_add_ui
 #define sub_i __gmpz_sub
 #define sub_i_ui __gmpz_sub_ui
+#define mul_i __gmpz_mul
 #define clear_i __gmpz_clear
 #define clears_i __gmpz_clears
 #define set_i __gmpz_set
 #define set_i_ui __gmpz_set_ui
+#define set_i_r __gmpz_set_f
 #define init_set_i_ui __gmpz_init_set_ui
 #define cmp_i __gmpz_cmp
 #define cmp_i_ui __gmpz_cmp_ui
 #define mod_i __gmpz_mod
 #define mod_i_ui mpz_fdiv_r_ui
+#define divs_i_ui __gmpz_divisible_ui_p
 #define div_i_ui mpz_cdiv_q_ui
+#define pow_ui __gmpz_pow_ui
+#define get_i_s __gmpz_get_str
 #define cmp_r __gmpf_cmp
 #define init_r __gmpf_init
+#define init_set_r_d __gmpf_init_set_d
 #define inits_r __gmpf_inits
 #define set_r __gmpf_set
 #define set_r_d __gmpf_set_d
+#define set_r_i __gmpf_set_z
 #define set_r_s __gmpf_set_str
 #define clear_r __gmpf_clear
 #define clears_r __gmpf_clears
-#define pow_ui __gmpz_pow_ui
+#define mul_r __gmpf_mul
+#define div_r __gmpf_div
 
 typedef enum {
     false,
@@ -54,7 +62,7 @@ bool assert_equal(ul_int expected, ul_int actual) {
         printf("passed\n");
         return true;
     }
-
+    
     printf("Expected %ld, but actual %ld\n", expected, actual);
     return false;
 }
@@ -117,6 +125,13 @@ bool assert_equal_real(real expected, real actual) {
 
     gmp_printf("Expected %Ff, but actual %Ff\n", expected, actual);
     return false;
+}
+
+bool assert_equal_r_d(double expected, real actual) {
+    real expected_r;
+    init_set_r_d(expected_r, expected);
+    assert_equal_real(expected_r, actual);
+    clear_r(expected_r);
 }
 
 /**

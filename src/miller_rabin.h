@@ -83,16 +83,25 @@ bool is_prime(ul_int n, ul_int k) {
   return true;
 }
 
-bool is_prime_i(ul_int n, ul_int k) {
-  if (n < 4 || n % 2 == 0) return false;
+bool is_prime_i(integer n, ul_int k) {
+  if (cmp_i_ui(n, 3) < 1 || divs_i_ui(n, 2) == 0) return false;
 
-  ul_int r, d;
-  get_rd(n, &r, &d);
+  integer r, d;
+  get_rd_i(n, r, d);
+
   // printf("n == %ld\n", n);
   // printf("r == %ld, d == %ld\n", r, d);
   
   int i;
   for (i = 0; i < k; i++) {
+    integer a, x;
+    real ran;
+
+    inits_i(a, x);
+    init_r(ran)l
+
+    gna
+
     u_int a = (u_int) (gna() * (n-4)) + 2;
     u_int x = (u_int) pow(a, d) % n;
 
