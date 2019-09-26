@@ -83,7 +83,7 @@ bool is_prime(ul_int n, ul_int k) {
   return true;
 }
 
-bool is_prime_i(integer n, ul_int k) {
+bool is_prime_i(const integer n, ul_int k) {
   if (cmp_i_ui(n, 3) < 1 || divs_i_ui(n, 2) == 0) return false;
 
   integer r, d;
