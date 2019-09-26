@@ -101,7 +101,7 @@ void test_is_prime() {
     
     assert_equal_bool(false, is_prime(36545, 3));
     assert_equal_bool(false, is_prime(4097, 3));
-    assert_equal_bool(true, is_prime(40961, 3));
+    assert_equal_bool(true, is_prime(40961, 3)); // fails due ui_int limitations
 
     assert_equal_bool(true, is_prime(97, 1));
     assert_equal_bool(true, is_prime(5, 1));
@@ -109,14 +109,53 @@ void test_is_prime() {
     assert_equal_bool(true, is_prime(11, 1));
     assert_equal_bool(true, is_prime(13, 1));
     assert_equal_bool(true, is_prime(17, 1));
-    assert_equal_bool(true, is_prime(17, 1));
-    assert_equal_bool(true, is_prime(97, 1));
     
-    // assert_equal_bool(true, is_prime(1000000000000066600000000000001, 1));
+    // assert_equal_bool(true, is_prime(1000000000000066600000000000001, 1)); // not run due ui_int limitations
+}
+
+void test_is_prime_i() {
+    integer n;
+    init_set_i_ui(n, 4);
+
+    assert_equal_bool(false, is_prime_i(n, 1));
+    set_i_s(n, "6");
+    assert_equal_bool(false, is_prime_i(n, 1));
+    set_i_s(n, "8");
+    assert_equal_bool(false, is_prime_i(n, 1));
+    set_i_s(n, "9");
+    assert_equal_bool(false, is_prime_i(n, 1));
+    set_i_s(n, "15");
+    assert_equal_bool(false, is_prime_i(n, 1));
+    set_i_s(n, "21");
+    assert_equal_bool(false, is_prime_i(n, 1));
+    set_i_s(n, "87");
+    assert_equal_bool(false, is_prime_i(n, 1));
+    
+    set_i_s(n, "36545");
+    assert_equal_bool(false, is_prime_i(n, 3));
+    set_i_s(n, "4097");
+    assert_equal_bool(false, is_prime_i(n, 3));
+    set_i_s(n, "40961");
+    assert_equal_bool(true, is_prime_i(n, 3));
+
+    set_i_s(n, "5");
+    assert_equal_bool(true, is_prime_i(n, 1));
+    set_i_s(n, "7");
+    assert_equal_bool(true, is_prime_i(n, 1));
+    set_i_s(n, "11");
+    assert_equal_bool(true, is_prime_i(n, 1));
+    set_i_s(n, "13");
+    assert_equal_bool(true, is_prime_i(n, 1));
+    set_i_s(n, "17");
+    assert_equal_bool(true, is_prime_i(n, 1));
+    set_i_s(n, "87");
+    assert_equal_bool(true, is_prime_i(n, 1));
+    set_i_s(n, "1000000000000066600000000000001");
+    assert_equal_bool(true, is_prime(n, 1));
 }
 
 int main() {
     // test_get_rd();
-    test_get_rd_i();
-    // test_is_prime();
+    // test_get_rd_i();
+    test_is_prime();
 }
