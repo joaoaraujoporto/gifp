@@ -79,7 +79,7 @@ bool assert_equal_bool(bool expected, bool actual) {
     return false;
 }
 
-bool assert_equal_integer(integer expected, integer actual) {
+bool assert_equal_integer(const integer expected, const integer actual) {
     if (!cmp_i(expected, actual)) {
         printf("passed\n");
         return true;
@@ -89,7 +89,7 @@ bool assert_equal_integer(integer expected, integer actual) {
     return false;
 }
 
-bool assert_equal_i_ui(ul_int expected, integer actual) {
+bool assert_equal_i_ui(ul_int expected, const integer actual) {
     integer expected_i;
     init_set_i_ui(expected_i, expected);
     assert_equal_integer(expected_i, actual);
@@ -117,7 +117,7 @@ bool assert_equal_double(double expected, double actual, int places_precision) {
 /**
  * @param places_precision until 6 places
  **/
-bool assert_equal_real(real expected, real actual) {
+bool assert_equal_real(const real expected, const real actual) {
     if (!cmp_r(expected, actual)) {
         printf("passed\n");
         return true;
@@ -127,7 +127,7 @@ bool assert_equal_real(real expected, real actual) {
     return false;
 }
 
-bool assert_equal_r_d(double expected, real actual) {
+bool assert_equal_r_d(double expected, const real actual) {
     real expected_r;
     init_set_r_d(expected_r, expected);
     assert_equal_real(expected_r, actual);

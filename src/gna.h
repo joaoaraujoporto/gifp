@@ -55,7 +55,7 @@ void gna_i(real n) {
   clears_r(p, q, NULL);
 }
 
-void sgna_i(real n, integer nseed_i) {
+void sgna_i(real n, const integer nseed_i) {
   seed_s = get_i_s(NULL, 10, nseed_i);
   gna_i(n);
 } 
@@ -99,14 +99,14 @@ ul_int gnab(u_int n_bits) {
   return gna() * (e - (b+1)) + (b+1);
 }
 
-void gna_i_ranged(integer n, integer b, integer e) {
+void gna_i_ranged(integer n, const integer b, const integer e) {
   real a, er;
   
   inits_r(a, er, NULL);
   gna_i(a);
 
-  sub_i(e, e, b);
-  set_r_i(er, e);
+  sub_i(n, e, b);
+  set_r_i(er, n);
   mul_r(a, a, er);
   set_i_r(n, a);
   sum_i(n, n, b);

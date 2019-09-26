@@ -83,43 +83,43 @@ bool is_prime(ul_int n, ul_int k) {
   return true;
 }
 
-bool is_prime_i(integer n, ul_int k) {
-  if (cmp_i_ui(n, 3) < 1 || divs_i_ui(n, 2) == 0) return false;
+// bool is_prime_i(integer n, ul_int k) {
+//   if (cmp_i_ui(n, 3) < 1 || divs_i_ui(n, 2) == 0) return false;
 
-  integer r, d;
-  get_rd_i(n, r, d);
+//   integer r, d;
+//   get_rd_i(n, r, d);
 
-  // printf("n == %ld\n", n);
-  // printf("r == %ld, d == %ld\n", r, d);
+//   // printf("n == %ld\n", n);
+//   // printf("r == %ld, d == %ld\n", r, d);
   
-  int i;
-  for (i = 0; i < k; i++) {
-    integer a, x;
-    real ran;
+//   int i;
+//   for (i = 0; i < k; i++) {
+//     integer a, x;
+//     real ran;
 
-    inits_i(a, x);
-    init_r(ran)l
+//     inits_i(a, x);
+//     init_r(ran)l
 
-    gna
+//     gna
 
-    u_int a = (u_int) (gna() * (n-4)) + 2;
-    u_int x = (u_int) pow(a, d) % n;
+//     u_int a = (u_int) (gna() * (n-4)) + 2;
+//     u_int x = (u_int) pow(a, d) % n;
 
-    // printf("a == %d, x == %d\n", a, x);
+//     // printf("a == %d, x == %d\n", a, x);
 
-    if (x == 1 || x == n-1) continue;
+//     if (x == 1 || x == n-1) continue;
 
-    int j;
-    for (j = 0; j < r-1; j++) {
-      x = (u_int) pow(x, 2) % n;
-      // printf("x == %d\n", x);
-      if (x == n-1) break;
-    }
+//     int j;
+//     for (j = 0; j < r-1; j++) {
+//       x = (u_int) pow(x, 2) % n;
+//       // printf("x == %d\n", x);
+//       if (x == n-1) break;
+//     }
 
-    if (j == r-1) return false;
-  }
+//     if (j == r-1) return false;
+//   }
   
-  return true;
-}
+//   return true;
+// }
 
 #endif

@@ -83,7 +83,7 @@ void test_get_rd_i() {
 
     set_i_s(n, "99999999999999999999999999999999999999999999999999999999999999999999998999999999998");
     assert_equal_bool(true, get_rd_i(n, r, d));
-    assert_equal_i_ui(6, r); // not really expected 6
+    assert_equal_i_ui(0, r);
     assert_equal_i_ui(571, d); // not really expected 571
 
     clears_i(n, r, d, NULL);
