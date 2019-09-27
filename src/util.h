@@ -25,6 +25,7 @@
 #define divs_i_ui __gmpz_divisible_ui_p
 #define div_i_ui mpz_cdiv_q_ui
 #define pow_ui __gmpz_pow_ui
+#define powm_i __gmpz_powm
 #define get_i_s __gmpz_get_str
 #define cmp_r __gmpf_cmp
 #define init_r __gmpf_init
