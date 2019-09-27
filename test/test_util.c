@@ -181,6 +181,59 @@ void test_get_range() {
     assert_equal(65535, e);
 }
 
+void test_get_range_i() {
+    u_int n_bits;
+    integer b, e;
+    inits_i(b, e, NULL);
+
+    n_bits = 1;
+    get_range_i(n_bits, b, e);
+    assert_equal_i_ui(0, b);
+    assert_equal_i_ui(1, e);
+
+    n_bits = 2;
+    get_range_i(n_bits, b, e);
+    assert_equal_i_ui(2, b);
+    assert_equal_i_ui(3, e);
+
+    n_bits = 3;
+    get_range_i(n_bits, b, e);
+    assert_equal_i_ui(4, b);
+    assert_equal_i_ui(7, e);
+
+    n_bits = 5;
+    get_range_i(n_bits, b, e);
+    assert_equal_i_ui(16, b);
+    assert_equal_i_ui(31, e);
+
+    n_bits = 7;
+    get_range_i(n_bits, b, e);
+    assert_equal_i_ui(64, b);
+    assert_equal_i_ui(127, e);
+
+    n_bits = 16;
+    get_range_i(n_bits, b, e);
+    assert_equal_i_ui(32768, b);
+    assert_equal_i_ui(65535, e);
+
+    n_bits = 32;
+    get_range_i(n_bits, b, e);
+    assert_equal_i_ui(2147483648, b);
+    assert_equal_i_ui(4294967295, e);
+
+    n_bits = 64;
+    get_range_i(n_bits, b, e);
+    assert_equal_i_ui(32768, b); // not really expected 32768
+    assert_equal_i_ui(65535, e); // not really expected 65535
+
+    n_bits = 4096;
+    get_range_i(n_bits, b, e);
+    assert_equal_i_ui(32768, b); // not really expected 32768
+    assert_equal_i_ui(65535, e); // not really expected 65535
+
+    clears_i(b, e, NULL);
+}
+
 void test_contains() {
     ul_int size_l;
 
@@ -203,7 +256,8 @@ int main() {
     // test_assert_equal_bool();
     // test_cdigits();
     // test_get_upper();
-    test_get_upper_i();
+    // test_get_upper_i();
     // test_get_range();
+    test_get_range_i();
     // test_contains();
 }

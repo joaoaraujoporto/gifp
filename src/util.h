@@ -171,6 +171,13 @@ void get_range(u_int n_bits, ul_int *b, ul_int *e) {
     *e = get_upper(n_bits);
 }
 
+void get_range_i(u_int n_bits, integer b, integer e) {
+    get_upper_i(b, n_bits-1);
+    sum_i_ui(b, b, 1);
+    if (n_bits == 1) set_i_ui(b, 1);
+    get_upper_i(e, n_bits);
+}
+
 bool contains(ul_int e, ul_int l[], ul_int size_l) {
     int i;
 

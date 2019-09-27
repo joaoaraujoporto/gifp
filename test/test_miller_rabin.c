@@ -152,7 +152,7 @@ void test_is_prime_i() {
     set_i_s(n, "17");
     assert_equal_bool(true, is_prime_i(n, 1));
     set_i_s(n, "1000000000000066600000000000001");
-    assert_equal_bool(true, is_prime_i(n, 1));
+    assert_equal_bool(true, is_prime_i(n, 100));
 }
 
 int main() {

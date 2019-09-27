@@ -99,6 +99,18 @@ ul_int gnab(u_int n_bits) {
   return gna() * (e - (b+1)) + (b+1);
 }
 
+void gnab_i(integer n, const integer n_bits) {
+
+  set_i(n, n_bits);
+
+  // if (n_bits < 1) return 0;
+
+  // ul_int b, e;
+  // get_range(n_bits, &b, &e);
+  
+  // return gna() * (e - (b+1)) + (b+1);
+}
+
 void gna_i_ranged(integer n, const integer b, const integer e) {
   real a, er;
   
