@@ -152,23 +152,34 @@ void test_gnab() {
 }
 
 void test_gnab_i() {
-    // integer n, n_bits;
-    // inits_i(n, n_bits, NULL);
-
-
+    integer n;
+    init_i(n);
 
     /**
      * 0 is not really expected in this block
      */
-    // assert_equal(0, gnab_i(0));
-    // assert_equal(0, gnab_i(1));
-    // assert_equal(0, gnab_i(2));
-    // assert_equal(0, gnab_i(3));
-    // assert_equal(0, gnab_i(4));
-    // assert_equal(0, gnab_i(5));
-    // assert_equal(0, gnab_i(16));
-    // assert_equal(0, gnab_i(32));
-    // assert_equal(0, gnab_i(64)); // yet not supported
+    gnab_i(n, 1);
+    assert_equal_i_ui(0, n);
+    gnab_i(n, 2);
+    assert_equal_i_ui(0, n);
+    gnab_i(n, 3);
+    assert_equal_i_ui(0, n);
+    gnab_i(n, 4);
+    assert_equal_i_ui(0, n);
+    gnab_i(n, 5);
+    assert_equal_i_ui(0, n);
+    gnab_i(n, 16);
+    assert_equal_i_ui(0, n);
+    gnab_i(n, 32);
+    assert_equal_i_ui(0, n);
+    gnab_i(n, 64);
+    assert_equal_i_ui(0, n);
+    gnab_i(n, 4096);
+    assert_equal_i_ui(0, n);
+    gnab_i(n, 8192);
+    assert_equal_i_ui(0, n);
+
+    clear_i(n);
 }
 
 void test_gna_i_ranged() {
@@ -210,6 +221,7 @@ int main() {
     // test_gna();
     // test_gnai();
     // test_gna_i();
-    test_gnab();
+    // test_gnab();
+    test_gnab_i();
     // test_gna_i_ranged();
 }
