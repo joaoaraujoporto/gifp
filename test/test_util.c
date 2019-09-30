@@ -100,7 +100,8 @@ void test_get_upper() {
     assert_equal(3, get_upper(2));
     assert_equal(7, get_upper(3));
     assert_equal(1023, get_upper(10));
-    assert_equal(65535, get_upper(16)); // limit for now
+    assert_equal(65535, get_upper(16));
+    assert_equal(4294967295, get_upper(32));
 }
 
 void test_get_upper_i() {
@@ -258,6 +259,6 @@ int main() {
     // test_get_upper();
     // test_get_upper_i();
     // test_get_range();
-    test_get_range_i();
+    // test_get_range_i();
     // test_contains();
 }
