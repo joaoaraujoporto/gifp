@@ -11,6 +11,12 @@ char* seed_s = NULL; // TODO - memory leak?
 double gna();
 double sgna(int nseed);
 ul_int gnai(int length);
+ul_int gnab(u_int n_bits);
+
+void gna_i(real n);
+void sgna_i(real n, const integer nseed_i);
+void gna_i_ranged(integer n, const integer b, const integer e);
+void gnab_i(integer n, ul_int n_bits);
 
 double gna() {
   ul_int multiplier, modulo;
@@ -28,37 +34,6 @@ double sgna(int nseed) {
   seed = nseed;
   return gna();
 }
-
-void gna_i(real n) {
-  integer seed, multiplier, modulo;
-  inits_i(seed, multiplier, modulo, NULL);
-
-  if (seed_s == NULL)
-    set_i_ui(seed, time(NULL));
-  else
-    set_i_s(seed, seed_s);
-
-  set_i_s(multiplier, "46341");
-  set_i_s(modulo, "2147483647");
-  mul_i(seed, seed, multiplier);
-  mod_i(seed, seed, modulo);
-  
-  real p, q;
-  inits_r(p, q, NULL);
-  set_r_i(p, seed);
-  set_r_i(q, modulo);
-
-  div_r(n, p, q);
-  seed_s = get_i_s(NULL, 10, seed);
-
-  clears_i(seed, multiplier, modulo, NULL);
-  clears_r(p, q, NULL);
-}
-
-void sgna_i(real n, const integer nseed_i) {
-  seed_s = get_i_s(NULL, 10, nseed_i);
-  gna_i(n);
-} 
 
 /** Generates a pseudo-random number with a given number of digits
  * @param length is the number of digits
@@ -97,6 +72,37 @@ ul_int gnab(u_int n_bits) {
   get_range(n_bits, &b, &e);
   
   return gna() * (e - (b+1)) + (b+1);
+}
+
+void gna_i(real n) {
+  integer seed, multiplier, modulo;
+  inits_i(seed, multiplier, modulo, NULL);
+
+  if (seed_s == NULL)
+    set_i_ui(seed, time(NULL));
+  else
+    set_i_s(seed, seed_s);
+
+  set_i_s(multiplier, "46341");
+  set_i_s(modulo, "2147483647");
+  mul_i(seed, seed, multiplier);
+  mod_i(seed, seed, modulo);
+  
+  real p, q;
+  inits_r(p, q, NULL);
+  set_r_i(p, seed);
+  set_r_i(q, modulo);
+
+  div_r(n, p, q);
+  seed_s = get_i_s(NULL, 10, seed);
+
+  clears_i(seed, multiplier, modulo, NULL);
+  clears_r(p, q, NULL);
+}
+
+void sgna_i(real n, const integer nseed_i) {
+  seed_s = get_i_s(NULL, 10, nseed_i);
+  gna_i(n);
 }
 
 void gna_i_ranged(integer n, const integer b, const integer e) {

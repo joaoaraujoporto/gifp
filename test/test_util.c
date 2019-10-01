@@ -250,6 +250,21 @@ void test_contains() {
     assert_equal_bool(false, contains(7, l2, size_l));
 }
 
+void test_ssqrt_ui() {
+    // assert_equal_double(1, ssqrt_ui(1), 6);
+    // assert_equal_double(2, ssqrt_ui(4), 6);
+    // assert_equal_double(3, ssqrt_ui(9), 6);
+    // assert_equal_double(4, ssqrt_ui(16), 6);
+    // assert_equal_double(5, ssqrt_ui(25), 6);
+    // assert_equal_double(6, ssqrt_ui(36), 6);
+    // assert_equal_double(7, ssqrt_ui(49), 6);
+    // assert_equal_double(8, ssqrt_ui(64), 6);
+    // assert_equal_double(9, ssqrt_ui(81), 6);
+    // assert_equal_double(9.110434, ssqrt_ui(83), 6);
+    assert_equal_double(2136.694644, ssqrt_ui(4565464), 6);
+    // assert_equal_double(100000, ssqrt_ui(10000000000), 6);
+}
+
 int main() {
     // test_assert_equal_integer();
     // test_assert_equal_double();
@@ -261,4 +276,5 @@ int main() {
     // test_get_range();
     // test_get_range_i();
     // test_contains();
+    test_ssqrt_ui();
 }

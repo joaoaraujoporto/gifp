@@ -148,7 +148,7 @@ void test_gnab() {
     assert_equal(0, gnab(5));
     assert_equal(0, gnab(16));
     assert_equal(0, gnab(32));
-    assert_equal(0, gnab(64)); // yet not supported
+    assert_equal(0, gnab(64)); // not supported
 }
 
 void test_gnab_i() {

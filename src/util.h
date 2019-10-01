@@ -70,6 +70,7 @@ bool assert_equal_r_d(double expected, const real actual);
 /**
  * Util function's declaration
  **/
+bool equal_double(double expected, double actual, int places_precision);
 u_int cdigits(ul_int number);
 ul_int expi(int x, int y);
 u_int get_upper(u_int n_bits);
@@ -205,6 +206,25 @@ bool assert_equal_r_d(double expected, const real actual) {
 }
 
 /**
+ * Check wheter a double value is equal to the expected value
+ * @param expected is the value expected
+ * @param actual is the value actually obtained
+ * @param places_precision indicates until decilmal place values must be compared (limit 6 places)
+ * @return true if expected == actual and false otherwise
+ **/
+bool equal_double(double expected, double actual, int places_precision) {
+    double precision = 1;
+
+    if (places_precision > 0)
+        precision /= pow(10, places_precision);
+
+    if (fabs(expected-actual) < precision)
+        return true;
+
+    return false;
+}
+
+/**
  * Count the number of digits of a given number
  * @param n is the number for counting (n must be natural)
  * @return the number of digits that composes n
@@ -290,6 +310,30 @@ bool contains(ul_int e, ul_int l[], ul_int size_l) {
             return true;
 
     return false;
+}
+
+double ssqrt_ui(ul_int n) {
+    int i;
+
+    for (i = 1; ; i++) if (i*i >= n) break;
+
+    double ii = (double) i - 0.5;
+    double j = (double) i - 1;
+    double iz = 2;
+    while (!equal_double(n, ii*ii, 6)) {
+        double k = (ii-j)/iz;
+        
+        if (ii*ii < n) ii += k;
+        else ii -= k;
+
+        // iz = pow(2.71, iz);
+        // iz = pow(2.71, iz)/(pow(2.71, iz) + 1) + 2*iz;
+        iz++;
+        // assert_equal_double(0, iz, 6);
+        // if (iz > 100) break;
+    }
+
+    return ii;
 }
 
 #endif
