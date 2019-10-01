@@ -1,0 +1,6 @@
+Se quiser compilar os fontes, tem-se como pre-requisitos:
+
+- gcc 7 ou superior e
+- GMP library (https://gmplib.org/manual/Installing-GMP.html#Installing-GMP)
+
+

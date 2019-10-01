@@ -261,6 +261,8 @@ void test_ssqrt_ui() {
     // assert_equal_double(8, ssqrt_ui(64), 6);
     // assert_equal_double(9, ssqrt_ui(81), 6);
     // assert_equal_double(9.110434, ssqrt_ui(83), 6);
+    // assert_equal_double(9.110434, ssqrt_ui(99), 6);
+    // assert_equal_double(9.110434, ssqrt_ui(90.25), 6);
     assert_equal_double(2136.694644, ssqrt_ui(4565464), 6);
     // assert_equal_double(100000, ssqrt_ui(10000000000), 6);
 }
@@ -277,4 +279,6 @@ int main() {
     // test_get_range_i();
     // test_contains();
     test_ssqrt_ui();
+    // double a = 1/pow(10, 100);
+    // printf("Expected %.100f\n", a/2);
 }

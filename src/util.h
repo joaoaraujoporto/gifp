@@ -170,7 +170,7 @@ bool assert_equal_double(double expected, double actual, int places_precision) {
         return true;
     }
 
-    printf("Expected %f, but actual %f\n", expected, actual);
+    printf("Expected %.15f, but actual %.15f\n", expected, actual);
     return false;
 }
 
@@ -320,17 +320,28 @@ double ssqrt_ui(ul_int n) {
     double ii = (double) i - 0.5;
     double j = (double) i - 1;
     double iz = 2;
+    double k = (ii-j);
+    // printf("k = %.15f \n", k);
     while (!equal_double(n, ii*ii, 6)) {
-        double k = (ii-j)/iz;
+        // printf("n = %ld \n", n);
+        // printf("ii = %.15f \n", ii);
+        // printf("ii*ii - n = %.15f \n", ii*ii - n);
+        // printf("iz = %.0f \n", iz);
+
+        // k = k/2;
+        k = (ii - j)/iz;
         
         if (ii*ii < n) ii += k;
         else ii -= k;
 
         // iz = pow(2.71, iz);
-        // iz = pow(2.71, iz)/(pow(2.71, iz) + 1) + 2*iz;
+        // iz = pow(2.71, iz)/(pow(2.71, iz) + 1) + 2;
         iz++;
-        // assert_equal_double(0, iz, 6);
+        
+        // printf("k = %.100f \n", k);
+        // printf("ii*ii = %.15f \n", ii*ii);
         // if (iz > 100) break;
+        // break;
     }
 
     return ii;
