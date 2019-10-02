@@ -160,7 +160,15 @@ bool assert_equal_i_ui(ul_int expected, const integer actual) {
  * @return true if expected == actual and false otherwise
  **/
 bool assert_equal_double(double expected, double actual, int places_precision) {
+    int i_expected = round(expected);
+    int i_actual = round(actual);
+
+    if (i_expected != i_actual) return false;
+    printf("%d %d \n", i_expected, i_actual);
+
     double precision = 1;
+    expected -= i_expected;
+    actual -= i_actual;
 
     if (places_precision > 0)
         precision /= pow(10, places_precision);
@@ -328,8 +336,8 @@ double ssqrt_ui(ul_int n) {
         // printf("ii*ii - n = %.15f \n", ii*ii - n);
         // printf("iz = %.0f \n", iz);
 
-        // k = k/2;
-        k = (ii - j)/iz;
+        k = k/2;
+        // k = (ii - j)/iz;
         
         if (ii*ii < n) ii += k;
         else ii -= k;
@@ -338,7 +346,7 @@ double ssqrt_ui(ul_int n) {
         // iz = pow(2.71, iz)/(pow(2.71, iz) + 1) + 2;
         iz++;
         
-        // printf("k = %.100f \n", k);
+        printf("k = %.100f \n", k);
         // printf("ii*ii = %.15f \n", ii*ii);
         // if (iz > 100) break;
         // break;
