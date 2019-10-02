@@ -31,21 +31,22 @@ void test_assert_equal_bool() {
 }
 
 void test_assert_equal_double() {
-    // assert_equal_bool(true, assert_equal_double(1, 1, 0));
-    // assert_equal_bool(true, assert_equal_double(1, 1, -1));
-    // assert_equal_bool(false, assert_equal_double(1, 2, 0));
-    // assert_equal_bool(false, assert_equal_double(1, 2, -1));
-    // assert_equal_bool(true, assert_equal_double(0.1, 0.1, 0));
-    // assert_equal_bool(true, assert_equal_double(0.1, 0.1, -1));
-    // assert_equal_bool(true, assert_equal_double(0.1, 0.2, 0));
-    // assert_equal_bool(true, assert_equal_double(0.1, 0.2, -1));
-    // assert_equal_bool(false, assert_equal_double(1, 2, 1));
-    // assert_equal_bool(false, assert_equal_double(0.1, 0.2, 1));
-    // assert_equal_bool(true, assert_equal_double(0.01, 0.02, 1));
-    // assert_equal_bool(true, assert_equal_double(0.000001, 0.000001, 6));
-    // assert_equal_bool(false, assert_equal_double(0.000001, 0.000002, 6));
-    assert_equal_bool(true, assert_equal_double(456546423, 21366.946974240359850*21366.946974240359850, 6));
+    assert_equal_bool(true, assert_equal_double(1, 1, 0));
+    assert_equal_bool(true, assert_equal_double(1, 1, -1));
+    assert_equal_bool(false, assert_equal_double(1, 2, 0));
+    assert_equal_bool(false, assert_equal_double(1, 2, -1));
+    assert_equal_bool(true, assert_equal_double(0.1, 0.1, 0));
+    assert_equal_bool(true, assert_equal_double(0.1, 0.1, -1));
+    assert_equal_bool(true, assert_equal_double(0.1, 0.2, 0));
+    assert_equal_bool(true, assert_equal_double(0.1, 0.2, -1));
+    assert_equal_bool(false, assert_equal_double(1, 2, 1));
+    assert_equal_bool(false, assert_equal_double(0.1, 0.2, 1));
+    assert_equal_bool(true, assert_equal_double(0.01, 0.02, 1));
+    assert_equal_bool(true, assert_equal_double(0.000001, 0.000001, 6));
+    assert_equal_bool(false, assert_equal_double(0.000001, 0.000002, 6));
+    assert_equal_bool(false, assert_equal_double(456546423, 21366.946974240359850*21366.946974240359850, 6));
     assert_equal_bool(false, assert_equal_double(456546423, 456546422.9999992847442626953125, 6));
+    assert_equal_bool(true, assert_equal_double(456546423, 456546423.0000002847442626953125, 6));
 }
 
 void test_assert_equal_real() {
@@ -265,14 +266,15 @@ void test_ssqrt_ui() {
     // assert_equal_double(9.110434, ssqrt_ui(83), 6);
     // assert_equal_double(9.110434, ssqrt_ui(99), 6);
     // assert_equal_double(9.110434, ssqrt_ui(90.25), 6);
+    assert_equal_double(9.110434, ssqrt_ui(90.875), 6);
     // assert_equal_double(2136.694644, ssqrt_ui(4565464), 6);
-    assert_equal_double(2136.694644, ssqrt_ui(456546423), 6);
+    // assert_equal_double(2136.694644, ssqrt_ui(456546423), 6);
     // assert_equal_double(100000, ssqrt_ui(10000000000), 6);
 }
 
 int main() {
     // test_assert_equal_integer();
-    test_assert_equal_double();
+    // test_assert_equal_double();
     // test_assert_equal_real();
     // test_assert_equal_bool();
     // test_cdigits();
@@ -281,7 +283,8 @@ int main() {
     // test_get_range();
     // test_get_range_i();
     // test_contains();
-    // test_ssqrt_ui();
+    test_ssqrt_ui();
     // double a = 1/pow(10, 100);
     // printf("Expected %.100f\n", 21366.946974240359850*21366.946974240359850);
+    // printf("%d\n", (int) trunc(16.9999999999875));
 }

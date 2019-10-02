@@ -160,20 +160,7 @@ bool assert_equal_i_ui(ul_int expected, const integer actual) {
  * @return true if expected == actual and false otherwise
  **/
 bool assert_equal_double(double expected, double actual, int places_precision) {
-    int i_expected = round(expected);
-    int i_actual = round(actual);
-
-    if (i_expected != i_actual) return false;
-    printf("%d %d \n", i_expected, i_actual);
-
-    double precision = 1;
-    expected -= i_expected;
-    actual -= i_actual;
-
-    if (places_precision > 0)
-        precision /= pow(10, places_precision);
-
-    if (fabs(expected-actual) < precision) {
+    if (equal_double(expected, actual, places_precision)) {
         printf("passed\n");
         return true;
     }
@@ -221,15 +208,23 @@ bool assert_equal_r_d(double expected, const real actual) {
  * @return true if expected == actual and false otherwise
  **/
 bool equal_double(double expected, double actual, int places_precision) {
+    int i_expected = (int) trunc(expected);
+    int i_actual = (int) trunc(actual);
+
+    if (i_expected != i_actual) return false;
+
     double precision = 1;
+    expected -= i_expected;
+    actual -= i_actual;
 
     if (places_precision > 0)
         precision /= pow(10, places_precision);
 
     if (fabs(expected-actual) < precision)
         return true;
-
+    
     return false;
+
 }
 
 /**
@@ -320,7 +315,7 @@ bool contains(ul_int e, ul_int l[], ul_int size_l) {
     return false;
 }
 
-double ssqrt_ui(ul_int n) {
+double ssqrt_ui(double n) {
     int i;
 
     for (i = 1; ; i++) if (i*i >= n) break;
@@ -330,7 +325,7 @@ double ssqrt_ui(ul_int n) {
     double iz = 2;
     double k = (ii-j);
     // printf("k = %.15f \n", k);
-    while (!equal_double(n, ii*ii, 6)) {
+    while (!equal_double(n, ii*ii, 7)) {
         // printf("n = %ld \n", n);
         // printf("ii = %.15f \n", ii);
         // printf("ii*ii - n = %.15f \n", ii*ii - n);
@@ -348,7 +343,7 @@ double ssqrt_ui(ul_int n) {
         
         printf("k = %.100f \n", k);
         // printf("ii*ii = %.15f \n", ii*ii);
-        // if (iz > 100) break;
+        // if (iz > 1200) break;
         // break;
     }
 
