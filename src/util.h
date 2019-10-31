@@ -315,7 +315,12 @@ bool contains(ul_int e, ul_int l[], ul_int size_l) {
     return false;
 }
 
-double ssqrt_ui(double n) {
+/**
+ * Returns the square root of a given double
+ * @param n is the given double
+ * @return the square root of n
+ */
+double ssqrt_d(double n) {
     int i;
 
     for (i = 1; ; i++) if (i*i >= n) break;

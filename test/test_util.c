@@ -254,22 +254,22 @@ void test_contains() {
 }
 
 void test_ssqrt_ui() {
-    // assert_equal_double(1, ssqrt_ui(1), 6);
-    // assert_equal_double(2, ssqrt_ui(4), 6);
-    // assert_equal_double(3, ssqrt_ui(9), 6);
-    // assert_equal_double(4, ssqrt_ui(16), 6);
-    // assert_equal_double(5, ssqrt_ui(25), 6);
-    // assert_equal_double(6, ssqrt_ui(36), 6);
-    // assert_equal_double(7, ssqrt_ui(49), 6);
-    // assert_equal_double(8, ssqrt_ui(64), 6);
-    // assert_equal_double(9, ssqrt_ui(81), 6);
-    // assert_equal_double(9.110434, ssqrt_ui(83), 6);
-    // assert_equal_double(9.110434, ssqrt_ui(99), 6);
-    // assert_equal_double(9.110434, ssqrt_ui(90.25), 6);
-    assert_equal_double(9.110434, ssqrt_ui(90.875), 6);
-    // assert_equal_double(2136.694644, ssqrt_ui(4565464), 6);
-    // assert_equal_double(2136.694644, ssqrt_ui(456546423), 6);
-    // assert_equal_double(100000, ssqrt_ui(10000000000), 6);
+    // assert_equal_double(1, ssqrt_d(1), 6);
+    // assert_equal_double(2, ssqrt_d(4), 6);
+    // assert_equal_double(3, ssqrt_d(9), 6);
+    // assert_equal_double(4, ssqrt_d(16), 6);
+    // assert_equal_double(5, ssqrt_d(25), 6);
+    // assert_equal_double(6, ssqrt_d(36), 6);
+    // assert_equal_double(7, ssqrt_d(49), 6);
+    // assert_equal_double(8, ssqrt_d(64), 6);
+    // assert_equal_double(9, ssqrt_d(81), 6);
+    // assert_equal_double(9.110434, ssqrt_d(83), 6);
+    // assert_equal_double(9.110434, ssqrt_d(99), 6);
+    // assert_equal_double(9.110434, ssqrt_d(90.25), 6);
+    assert_equal_double(9.110434, ssqrt_d(90.875), 6);
+    // assert_equal_double(2136.694644, ssqrt_d(4565464), 6);
+    // assert_equal_double(2136.694644, ssqrt_d(456546423), 6);
+    // assert_equal_double(100000, ssqrt_d(10000000000), 6);
 }
 
 int main() {
