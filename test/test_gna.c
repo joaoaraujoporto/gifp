@@ -220,8 +220,8 @@ void test_gna_i_ranged() {
 int main() {
     // test_gna();
     // test_gnai();
-    // test_gna_i();
+    test_gna_i();
     // test_gnab();
-    test_gnab_i();
+    // test_gnab_i();
     // test_gna_i_ranged();
 }

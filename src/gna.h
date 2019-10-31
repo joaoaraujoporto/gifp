@@ -6,11 +6,11 @@
 #include "math.h"
 
 ul_int seed = 0;
-char* seed_s = NULL; // TODO - memory leak?
+char* seed_s = NULL; // TODO - memory leak? Yep.
 
 double gna();
 double sgna(int nseed);
-ul_int gnai(int length);
+ul_int gnai(int n_digits);
 ul_int gnab(u_int n_bits);
 
 void gna_i(real n);
@@ -18,6 +18,13 @@ void sgna_i(real n, const integer nseed_i);
 void gna_i_ranged(integer n, const integer b, const integer e);
 void gnab_i(integer n, ul_int n_bits);
 
+
+/**
+ * Generates a pseudo-random double in the range [0,1].
+ * If a seed wasn't never defined with sgna(), set the seed
+ * with currently time.
+ * @return the pseudo-random number
+ */
 double gna() {
   ul_int multiplier, modulo;
 
@@ -30,31 +37,39 @@ double gna() {
   return (double) seed / (double) modulo;
 }
 
+/**
+ * Generates a pseudo-random double in the range [0,1] based on a seed.
+ * @param nseed is the seed
+ * @return the pseudo-random number
+ */
 double sgna(int nseed) {
   seed = nseed;
   return gna();
 }
 
-/** Generates a pseudo-random number with a given number of digits
- * @param length is the number of digits
- * @return n, the random number
+/** Generates a pseudo-random unsigned long int
+ * with a given number of digits.
+ * @param n_digits is the number of digits
+ * @return the pseudo-random number or 0 if n_bits < 0
  */
-ul_int gnai(int length) {
-  if (length < 1) return 0;
+ul_int gnai(int n_digits) {
+  if (n_digits < 1) return 0;
 
   ul_int n, c;
-  u_int r, q, i, j;
+  u_int r, q;
 
   n = 0; c = 0;
-  r = length%6;
-  q = length/6;
+  r = n_digits%6;
+  q = n_digits/6;
 
+  int i;
   for (i = 0; i < q; i++) {
     u_int p = (u_int) (gna() * 1e6);
     while (p == 0 || p < 1e5) p = (u_int) (gna() * 1e6);
     n += (ul_int) (p * pow(10, 6*i));
   }
 
+  int j;
   for (int j = 0; j < r; j++) {
     u_int p = (u_int) (gna() * 1e1);
     while (p == 0) p = (u_int) (gna() * 1e1);
@@ -65,6 +80,11 @@ ul_int gnai(int length) {
   return n;
 }
 
+/** Generates a pseudo-random unsigned long int
+ * with a given number of bits.
+ * @param n_bits is the number of bits
+ * @return the pseudo-random number or 0 if n_bits < 0
+ */
 ul_int gnab(u_int n_bits) {
   if (n_bits < 1) return 0;
 
@@ -74,6 +94,13 @@ ul_int gnab(u_int n_bits) {
   return gna() * (e - (b+1)) + (b+1);
 }
 
+/**
+ * Generates a pseudo-random real in the range [0,1].
+ * If a seed wasn't never defined with sgna_i(), set the seed
+ * with currently time.
+ * @return the pseudo-random number
+ * @param n is a pointer to the real where will be stored the pseudo-random real
+ */
 void gna_i(real n) {
   integer seed, multiplier, modulo;
   inits_i(seed, multiplier, modulo, NULL);
@@ -100,11 +127,24 @@ void gna_i(real n) {
   clears_r(p, q, NULL);
 }
 
+/**
+ * Generates a pseudo-random real in the range [0,1] based on a seed.
+ * @param nseed is the seed
+ * @param n is a pointer to the real where will be stored the pseudo-random real
+ */
 void sgna_i(real n, const integer nseed_i) {
   seed_s = get_i_s(NULL, 10, nseed_i);
   gna_i(n);
 }
 
+/**
+ * Generates a pseudo-random integer in a given range [b,e].
+ * If a seed wasn't never defined with sgna_i(), set the seed
+ * with currently time.
+ * @param b is the begin of the range
+ * @param e is the end of the range
+ * @param n is a pointer to the integer where will be stored the pseudo-random integer
+ */
 void gna_i_ranged(integer n, const integer b, const integer e) {
   real a, er;
   
@@ -120,6 +160,11 @@ void gna_i_ranged(integer n, const integer b, const integer e) {
   clears_r(a, er, NULL);
 }
 
+/** Generates a pseudo-random integer
+ * with a given number of bits.
+ * @param n_bits is the number of bits
+ * @param n is a pointer to the integer where will be stored the pseudo-random integer
+ */
 void gnab_i(integer n, ul_int n_bits) {
   integer b, e;
   inits_i(b, e, NULL);

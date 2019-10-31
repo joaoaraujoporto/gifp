@@ -6,6 +6,19 @@
 #include "gmp.h"
 
 /**
+ * Type's alias for facility
+ **/
+typedef enum {
+    false,
+    true
+} bool;
+
+typedef mpz_t integer;
+typedef mpf_t real;
+typedef unsigned long int ul_int;
+typedef unsigned int u_int;
+
+/**
  * GMP's functions name redefined for facility
  **/
 #define init_i __gmpz_init
@@ -29,7 +42,7 @@
 #define div_i_ui mpz_cdiv_q_ui
 #define pow_ui __gmpz_pow_ui
 #define powm_i __gmpz_powm
-#define get_i_s __gmpz_get_str
+#define get_i_s __gmpz_get_str /* Integer to string */
 #define cmp_r __gmpf_cmp
 #define init_r __gmpf_init
 #define init_set_r_d __gmpf_init_set_d
@@ -43,18 +56,6 @@
 #define mul_r __gmpf_mul
 #define div_r __gmpf_div
 
-/**
- * Type's alias for facility
- **/
-typedef enum {
-    false,
-    true
-} bool;
-
-typedef mpz_t integer;
-typedef mpf_t real;
-typedef unsigned long int ul_int;
-typedef unsigned int u_int;
 
 /**
  * Assert function's declaration
@@ -187,7 +188,7 @@ bool assert_equal_real(const real expected, const real actual) {
 }
 
 /**
- * Check wheter a real value is equal to the expected value given as double
+ * Check whether a real value is equal to the expected value given as double
  * and print on default output the result
  * @param expected is the value expected
  * @param actual is the value actually obtained
@@ -260,7 +261,7 @@ u_int get_upper(u_int n_bits) {
 
 /**
  * Returns the maximum integer that is possible to represent with n_bits
- * @param upper is a pointer to integer where will be stored the maximum integer value
+ * @param upper is a pointer to the integer where will be stored the maximum integer value
  * @param n_bits is the quantity of digits for representation
  **/
 void get_upper_i(integer upper, u_int n_bits) {
@@ -274,10 +275,10 @@ void get_upper_i(integer upper, u_int n_bits) {
 }
 
 /**
- * Returns range of ul_int values represented necessarely by n_bits
+ * Returns the range of ul_int values represented necessarely by n_bits
  * @param n_bits is the quantity of digits for representation
- * @param b is a pointer to ul_int where will be stored the minimum value of the range
- * @param b is a pointer to ul_int where will be stored the maximum value of the range
+ * @param b is a pointer to the ul_int where will be stored the minimum value of the range
+ * @param b is a pointer to the ul_int where will be stored the maximum value of the range
  **/
 void get_range(u_int n_bits, ul_int *b, ul_int *e) {
     *b = get_upper(n_bits-1) + 1;
@@ -288,8 +289,8 @@ void get_range(u_int n_bits, ul_int *b, ul_int *e) {
 /**
  * Returns range of integer values represented necessarely by n_bits
  * @param n_bits is the quantity of digits for representation
- * @param b is a pointer to integer where will be stored the minimum value of the range
- * @param b is a pointer to integer where will be stored the maximum value of the range
+ * @param b is a pointer to the integer where will be stored the minimum value of the range
+ * @param b is a pointer to the integer where will be stored the maximum value of the range
  **/
 void get_range_i(u_int n_bits, integer b, integer e) {
     get_upper_i(b, n_bits-1);
