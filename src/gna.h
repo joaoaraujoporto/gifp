@@ -6,7 +6,7 @@
 #include "math.h"
 
 ul_int seed = 0;
-char* seed_s = NULL; // TODO - memory leak? Yep.
+char* seed_s; // TODO - memory leak? Yep.
 
 double gna();
 double sgna(int nseed);

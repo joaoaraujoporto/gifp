@@ -183,7 +183,7 @@ bool assert_equal_real(const real expected, const real actual) {
         return true;
     }
 
-    gmp_printf("Expected %Ff, but actual %Ff\n", expected, actual);
+    gmp_printf("Expected %.20Ff, but actual %.20Ff\n", expected, actual);
     return false;
 }
 
@@ -195,10 +195,14 @@ bool assert_equal_real(const real expected, const real actual) {
  * @return true if expected == actual and false otherwise
  **/
 bool assert_equal_r_d(double expected, const real actual) {
+    bool result;
     real expected_r;
+
     init_set_r_d(expected_r, expected);
-    assert_equal_real(expected_r, actual);
+    result = assert_equal_real(expected_r, actual);
     clear_r(expected_r);
+
+    return result;
 }
 
 /**
