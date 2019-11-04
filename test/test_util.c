@@ -84,16 +84,16 @@ void test_assert_equal_real() {
     clears_r(n, m, NULL);
 }
 
-void test_cdigits() {
-    assert_equal(1, cdigits(0));
-    assert_equal(2, cdigits(11));
-    assert_equal(2, cdigits(13));
-    assert_equal(3, cdigits(137));
-    assert_equal(4, cdigits(4887));
-    assert_equal(10, cdigits(1234567890));
-    assert_equal(10, cdigits(3797281624));
-    assert_equal(10, cdigits(6585872435));
-    assert_equal(10, cdigits(9468553006));
+void test_n_digits() {
+    assert_equal(1, n_digits(0));
+    assert_equal(2, n_digits(11));
+    assert_equal(2, n_digits(13));
+    assert_equal(3, n_digits(137));
+    assert_equal(4, n_digits(4887));
+    assert_equal(10, n_digits(1234567890));
+    assert_equal(10, n_digits(3797281624));
+    assert_equal(10, n_digits(6585872435));
+    assert_equal(10, n_digits(9468553006));
 }
 
 
@@ -254,30 +254,30 @@ void test_contains() {
 }
 
 void test_ssqrt_ui() {
-    // assert_equal_double(1, ssqrt_d(1), 6);
-    // assert_equal_double(2, ssqrt_d(4), 6);
-    // assert_equal_double(3, ssqrt_d(9), 6);
-    // assert_equal_double(4, ssqrt_d(16), 6);
-    // assert_equal_double(5, ssqrt_d(25), 6);
-    // assert_equal_double(6, ssqrt_d(36), 6);
-    // assert_equal_double(7, ssqrt_d(49), 6);
-    // assert_equal_double(8, ssqrt_d(64), 6);
-    // assert_equal_double(9, ssqrt_d(81), 6);
-    // assert_equal_double(9.110434, ssqrt_d(83), 6);
-    // assert_equal_double(9.110434, ssqrt_d(99), 6);
-    // assert_equal_double(9.110434, ssqrt_d(90.25), 6);
+    assert_equal_double(1, ssqrt_d(1), 6);
+    assert_equal_double(2, ssqrt_d(4), 6);
+    assert_equal_double(3, ssqrt_d(9), 6);
+    assert_equal_double(4, ssqrt_d(16), 6);
+    assert_equal_double(5, ssqrt_d(25), 6);
+    assert_equal_double(6, ssqrt_d(36), 6);
+    assert_equal_double(7, ssqrt_d(49), 6);
+    assert_equal_double(8, ssqrt_d(64), 6);
+    assert_equal_double(9, ssqrt_d(81), 6);
+    assert_equal_double(9.110434, ssqrt_d(83), 6);
+    assert_equal_double(9.110434, ssqrt_d(99), 6);
+    assert_equal_double(9.110434, ssqrt_d(90.25), 6);
     assert_equal_double(9.110434, ssqrt_d(90.875), 6);
-    // assert_equal_double(2136.694644, ssqrt_d(4565464), 6);
-    // assert_equal_double(2136.694644, ssqrt_d(456546423), 6);
-    // assert_equal_double(100000, ssqrt_d(10000000000), 6);
+    assert_equal_double(2136.694644, ssqrt_d(4565464), 6);
+    assert_equal_double(2136.694644, ssqrt_d(456546423), 6);
+    assert_equal_double(100000, ssqrt_d(10000000000), 6);
 }
 
 int main() {
-    // test_assert_equal_integer();
-    // test_assert_equal_double();
-    // test_assert_equal_real();
     // test_assert_equal_bool();
-    // test_cdigits();
+    // test_assert_equal_double();
+    // test_assert_equal_integer();
+    // test_assert_equal_real();
+    // test_n_digits();
     // test_get_upper();
     // test_get_upper_i();
     // test_get_range();

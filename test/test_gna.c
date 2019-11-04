@@ -70,49 +70,55 @@ void test_gna_i() {
     gna_i(n);
     assert_equal_r_d(0.0, n);
 
+    /**
+     * Expected is a aproximation in this block then result is false
+     */
     set_i_ui(seed, 99);
     sgna_i(n, seed);
-    assert_equal_r_d(0.002136341763, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.002136341763, n);
     gna_i(n);
-    assert_equal_r_d(0.0002136295662, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.0002136295662, n);
     gna_i(n);
-    assert_equal_r_d(0.8998077288, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.8998077288, n);
     gna_i(n);
-    assert_equal_r_d(0.9899594099, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.9899594099, n);
     gna_i(n);
-    assert_equal_r_d(0.7090151681, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.7090151681, n);
     gna_i(n);
-    assert_equal_r_d(0.4719055758, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.4719055758, n);
     gna_i(n);
-    assert_equal_r_d(0.5762890408, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.5762890408, n);
     gna_i(n);
-    assert_equal_r_d(0.8104383465, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.8104383465, n);
     gna_i(n);
-    assert_equal_r_d(0.5234149306, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.5234149306, n);
     gna_i(n);
-    assert_equal_r_d(0.5712976584, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.5712976584, n);
 
+    /**
+     * Expected is a aproximation in this block then result is false
+     */
     set_i_ui(seed, 10);
     sgna_i(n, seed);
-    assert_equal_r_d(0.0002157920973, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.0002157920973, n);
     gna_i(n);
-    assert_equal_r_d(0.00002157874406, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.00002157874406, n);
     gna_i(n);
-    assert_equal_r_d(0.9999805787, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.9999805787, n);
     gna_i(n);
-    assert_equal_r_d(0.09999589999, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.09999589999, n);
     gna_i(n);
-    assert_equal_r_d(0.9100015321, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.9100015321, n);
     gna_i(n);
-    assert_equal_r_d(0.3810005632, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.3810005632, n);
     gna_i(n);
-    assert_equal_r_d(0.9470999031, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.9470999031, n);
     gna_i(n);
-    assert_equal_r_d(0.556609934, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.556609934, n);
     gna_i(n);
-    assert_equal_r_d(0.8609510031, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.8609510031, n);
     gna_i(n);
-    assert_equal_r_d(0.3304341069, n); // Expected is a aproximation then result is false
+    assert_equal_r_d(0.3304341069, n);
 
     clear_r(n);
     clear_i(seed);
@@ -220,8 +226,8 @@ void test_gna_i_ranged() {
 int main() {
     // test_gna();
     // test_gnai();
-    test_gna_i();
+    // test_gna_i();
     // test_gnab();
     // test_gnab_i();
-    // test_gna_i_ranged();
+    test_gna_i_ranged();
 }

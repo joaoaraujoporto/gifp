@@ -6,7 +6,7 @@
 #include "math.h"
 
 ul_int seed = 0;
-char* seed_s; // TODO - memory leak? Yep.
+char* seed_s; // TODO - known issue: memory leak
 
 double gna();
 double sgna(int nseed);
@@ -17,7 +17,6 @@ void gna_i(real n);
 void sgna_i(real n, const integer nseed_i);
 void gna_i_ranged(integer n, const integer b, const integer e);
 void gnab_i(integer n, ul_int n_bits);
-
 
 /**
  * Generates a pseudo-random double in the range [0,1].

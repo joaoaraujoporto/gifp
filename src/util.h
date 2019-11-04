@@ -72,7 +72,7 @@ bool assert_equal_r_d(double expected, const real actual);
  * Util function's declaration
  **/
 bool equal_double(double expected, double actual, int places_precision);
-u_int cdigits(ul_int number);
+u_int n_digits(ul_int number);
 ul_int expi(int x, int y);
 u_int get_upper(u_int n_bits);
 void get_upper_i(integer upper, u_int n_bits);
@@ -219,25 +219,22 @@ bool equal_double(double expected, double actual, int places_precision) {
     if (i_expected != i_actual) return false;
 
     double precision = 1;
+    
     expected -= i_expected;
     actual -= i_actual;
 
-    if (places_precision > 0)
-        precision /= pow(10, places_precision);
-
-    if (fabs(expected-actual) < precision)
-        return true;
+    if (places_precision > 0) precision /= pow(10, places_precision);
+    if (fabs(expected-actual) < precision) return true;
     
     return false;
-
 }
 
 /**
- * Count the number of digits of a given number
- * @param n is the number for counting (n must be natural)
+ * Counts the number of digits of a given unsigned long int and returns it
+ * @param n is the number for counting
  * @return the number of digits that composes n
  **/
-u_int cdigits(ul_int n) {
+u_int n_digits(ul_int n) {
     u_int c = 1;
     for (; n/10 != 0; c++) n /= 10; 
     return c;
@@ -299,7 +296,7 @@ void get_range(u_int n_bits, ul_int *b, ul_int *e) {
 void get_range_i(u_int n_bits, integer b, integer e) {
     get_upper_i(b, n_bits-1);
     sum_i_ui(b, b, 1);
-    if (n_bits == 1) set_i_ui(b, 1);
+    if (n_bits == 1) sub_i_ui(b, b, 1);
     get_upper_i(e, n_bits);
 }
 
@@ -314,8 +311,7 @@ bool contains(ul_int e, ul_int l[], ul_int size_l) {
     int i;
 
     for (i = 0; i < size_l; i++)
-        if (e == l[i])
-            return true;
+        if (e == l[i]) return true;
 
     return false;
 }
