@@ -125,21 +125,21 @@ void test_gna_i() {
 }
 
 void test_gnai() {
-    assert_equal(1, cdigits(gnai(1)));
-    assert_equal(2, cdigits(gnai(2)));
-    assert_equal(3, cdigits(gnai(3)));
-    assert_equal(4, cdigits(gnai(4)));
-    assert_equal(5, cdigits(gnai(5)));
-    assert_equal(6, cdigits(gnai(6)));
-    assert_equal(7, cdigits(gnai(7)));
-    assert_equal(8, cdigits(gnai(8)));
-    assert_equal(9, cdigits(gnai(9)));
-    assert_equal(10, cdigits(gnai(10)));
-    assert_equal(11, cdigits(gnai(11)));
-    assert_equal(12, cdigits(gnai(12)));
-    assert_equal(13, cdigits(gnai(13)));
-    assert_equal(14, cdigits(gnai(14)));
-    assert_equal(18, cdigits(gnai(18))); // limit for now (ul_int has 64 bits)
+    assert_equal(1, n_digits(gnai(1)));
+    assert_equal(2, n_digits(gnai(2)));
+    assert_equal(3, n_digits(gnai(3)));
+    assert_equal(4, n_digits(gnai(4)));
+    assert_equal(5, n_digits(gnai(5)));
+    assert_equal(6, n_digits(gnai(6)));
+    assert_equal(7, n_digits(gnai(7)));
+    assert_equal(8, n_digits(gnai(8)));
+    assert_equal(9, n_digits(gnai(9)));
+    assert_equal(10, n_digits(gnai(10)));
+    assert_equal(11, n_digits(gnai(11)));
+    assert_equal(12, n_digits(gnai(12)));
+    assert_equal(13, n_digits(gnai(13)));
+    assert_equal(14, n_digits(gnai(14)));
+    assert_equal(18, n_digits(gnai(18))); // limit for now (ul_int has 64 bits)
 }
 
 void test_gnab() {
